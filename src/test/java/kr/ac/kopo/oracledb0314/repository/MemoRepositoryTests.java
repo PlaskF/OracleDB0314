@@ -21,7 +21,7 @@ public class MemoRepositoryTests {
     @Test
     public void testInsertDummies(){
         IntStream.rangeClosed(1,100).forEach(i ->{
-            Memo memo = kr.ac.kopo.oracledb0314.entity.Memo.builder().memoText("Dummy Data Test").build();
+            Memo memo = Memo.builder().memoText("Dummy Data Test" + 1).build();
             memoRepository.save(memo);
         });
     }
