@@ -15,13 +15,13 @@ public class MemoRepositoryTests {
 
     @Test
     public void testClass(){
-        System.out.println(memoRepository.getClass());
+        System.out.println(memoRepository.getClass().getName());
     }
 
     @Test
     public void testInsertDummies(){
         IntStream.rangeClosed(1,100).forEach(i ->{
-            Memo memo = Memo.builder().memoText("Dummy Data Test" + 1).build();
+            Memo memo = Memo.builder().memoText("Dummy Data Test" + i).build();
             memoRepository.save(memo);
         });
     }
