@@ -4,6 +4,9 @@ import kr.ac.kopo.oracledb0314.entity.Memo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
@@ -82,5 +85,19 @@ public class MemoRepositoryTests {
         long mno = 100l;
 
         memoRepository.deleteById(mno);
+    }
+
+    @Test
+    public void testPageDefault(){
+//        1 페이지 당 10개의 Entity
+        Pageable pageable = PageRequest.of(1,10);
+
+        Page<Memo> result = memoRepository.findAll(pageable);
+
+        System.out.println(result);
+
+        for (Memo memo : result.getContent()){
+            System.out.println(memo);
+        }
     }
 }
